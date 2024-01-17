@@ -1,59 +1,84 @@
 package com.example.snakesandladders.model;
 
-import java.util.Map;
+import com.almasb.fxgl.entity.level.tiled.Tile;
+
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
 
 public class GameBoard {
-    private int size; // The size of the game board
-    private Map<Integer, Snake> snakes; // Map to store snake positions
-    private Map<Integer, Ladder> ladders; // Map to store ladder positions
-    private Map<Player, Integer> playerPositions; // Map to store player positions
+    private int rows;
+    private int columns;
+    private final Map<Integer, Integer> snakes; // Map from start position to end position of snakes
+    private final Map<Integer, Integer> ladders; // Map from start position to end position of ladders
+    private final Map<Integer, Tile> specialTiles; // Map of special tiles (question, surprise, etc.)
 
-    public GameBoard(int size) {
-        this.size = size;
+    public GameBoard(int difficulty) {
+        // Initialize the board based on difficulty
+        switch (difficulty) {
+            case 1: // Easy
+                this.rows = 7;
+                this.columns = 7;
+                break;
+            case 2: // Medium
+                this.rows = 10;
+                this.columns = 10;
+                break;
+            case 3: // Hard
+                this.rows = 13;
+                this.columns = 13;
+                break;
+
+        }
+
         this.snakes = new HashMap<>();
         this.ladders = new HashMap<>();
-        this.playerPositions = new HashMap<>();
+        this.specialTiles = new HashMap<>();
+
+        initializeBoard();
     }
 
-    // Method to add a snake to the board
-    public void addSnake(Snake snake) {
-        snakes.put(snake.getStart(), snake);
+    private void initializeBoard() {
+        // Initialize snakes, ladders, and special tiles
+        placeSnakes();
+        placeLadders();
+        placeSpecialTiles();
     }
 
-    // Method to add a ladder to the board
-    public void addLadder(Ladder ladder) {
-        ladders.put(ladder.getStart(), ladder);
+    private void placeSnakes() {
+        /* TO DO*/
     }
 
-    // Method to add a player to the board
-    public void addPlayer(Player player, int startPosition) {
-        playerPositions.put(player, startPosition);
+    private void placeLadders() {
+        /* TO DO*/
     }
 
-    // Method to move a player based on the dice roll
-    public void movePlayer(Player player, int diceRoll) {
-        // Implement player movement logic here
-        // Check for snakes and ladders
-        // Update player position accordingly
+    private void placeSpecialTiles() {
+        /* TO DO*/
     }
 
-    // Add other methods for game logic as needed
-
-    // Getter methods for board size, snakes, ladders, and player positions
-    public int getSize() {
-        return size;
+    public boolean isSnakeHead(int position) {
+        return snakes.containsKey(position);
     }
 
-    public Map<Integer, Snake> getSnakes() {
-        return snakes;
+    public boolean isLadderBottom(int position) {
+        return ladders.containsKey(position);
     }
 
-    public Map<Integer, Ladder> getLadders() {
-        return ladders;
+    public boolean isSpecialTile(int position) {
+        return specialTiles.containsKey(position);
     }
 
-    public Map<Player, Integer> getPlayerPositions() {
-        return playerPositions;
+    public Tile  getSpecialTileType(int position) {
+        return specialTiles.get(position);
     }
+
+    public int getSnakeTail(int position) {
+        return snakes.get(position);
+    }
+
+    public int getLadderTop(int position) {
+        return ladders.get(position);
+    }
+
 }
