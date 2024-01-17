@@ -1,22 +1,17 @@
 package com.example.snakesandladders.model;
 
 public class Snake {
-    private int start; // Starting position of the snake
-    private int end;   // Ending position of the snake
+    private int startPosition;
+    private int endPosition;
 
-    public Snake(int start, int end) {
-        this.start = start;
-        this.end = end;
+    public Snake(int startPosition, int endPosition) {
+        // Initialize snake attributes here
     }
 
-    // Getter methods for start and end positions
-    public int getStart() {
-        return start;
+    public void triggerEffect(Player player) {
+        // Move the player to the endPosition when they land on the snake
     }
-
-    public int getEnd() {
-        return end;
+    public int getStart(){
+        return this.startPosition;
     }
-
-    // Other methods related to the Snake class
 }

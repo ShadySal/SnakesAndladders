@@ -17,6 +17,10 @@ public class Ladder {
     public int getEnd() {
         return end;
     }
+    public void triggerEffect(Player player) {
+        // Move the player to the endPosition when they land on the ladder
+    }
+
 
     // Other methods related to the Ladder class
 }

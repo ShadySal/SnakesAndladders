@@ -23,14 +23,10 @@ public class MainController {
     private Button StartGameBtn;
 
     public void StartGame() throws IOException {
-        Stage stage = (Stage) StartGameBtn.getScene().getWindow();
-        stage.close();
-
-        Stage primaryStage = new Stage();
+        Stage currentStage = (Stage) StartGameBtn.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/com/example/snakesandladders/InitializeGame.fxml"));
-        primaryStage.setTitle("Welcome!");
-        primaryStage.setScene(new Scene(root, 600, 600));
-        primaryStage.show();
+        currentStage.setTitle("Game Initialization");
+        currentStage.setScene(new Scene(root, 600, 600));
     }
 
 }
